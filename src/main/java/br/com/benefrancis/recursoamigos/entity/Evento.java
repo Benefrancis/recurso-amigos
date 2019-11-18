@@ -4,9 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -32,6 +33,6 @@ public class Evento {
 	@Temporal(TemporalType.TIME)
 	private Date hora;
 
-	@OneToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Amigo> convidados;
 }
