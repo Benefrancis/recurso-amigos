@@ -37,4 +37,8 @@ public class EventoService {
 			return new ArrayList<Evento>();
 		}
 	}
+
+	public Evento save(Evento e) {
+		return repo.save(e);
+	}
 }

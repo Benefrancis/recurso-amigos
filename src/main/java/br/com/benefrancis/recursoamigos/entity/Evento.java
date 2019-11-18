@@ -5,11 +5,15 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Fetch;
 
 import lombok.Data;
 
@@ -18,9 +22,11 @@ import lombok.Data;
 public class Evento {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
+	
+	@ManyToOne(fetch = FetchType.EAGER)
 	private TipoEvento tipo;
 
 	private String nome;
@@ -30,9 +36,9 @@ public class Evento {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 
-	@Temporal(TemporalType.TIME)
-	private Date hora;
+	private String hora;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	
+	@ManyToMany(fetch = FetchType.EAGER, targetEntity = Amigo.class)
 	private List<Amigo> convidados;
 }
