@@ -10,7 +10,7 @@ spring:
  jpa:
    open-in-view: false
    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-   generate-ddl: false
+   generate-ddl: true
    hibernate:
      naming:
        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
