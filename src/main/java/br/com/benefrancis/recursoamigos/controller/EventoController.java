@@ -3,6 +3,7 @@ package br.com.benefrancis.recursoamigos.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,7 @@ public class EventoController {
 	}
 
 	@PostMapping(value = "/evento")
+	@PreAuthorize("hasAuthority('create_evento')")
 	public Evento save(@RequestBody Evento e) {
 		Evento salvo = service.save(e);
 		return findById(salvo.getId());
